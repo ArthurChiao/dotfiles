@@ -1,0 +1,23 @@
+# Easier navigation: .., ..., ...., ....., -
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+alias .....="cd ../../../.."
+alias -- -="cd -"
+
+# basic
+alias ll='ls -halF'
+
+# list only directories
+alias ll='ls -halF'
+alias la='ls -A'
+alias l='ls -CF'
+
+# only list directories
+alias lsd="ls -lF | grep --color=never '^d'"
+
+# get week number
+alias week='date +%V'
+
+# Stopwatch
+alias timer='echo "Timer started. Stop with Ctrl-D." && date && time cat && date'
