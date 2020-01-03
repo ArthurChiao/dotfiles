@@ -73,7 +73,9 @@ $ cat ~/.git-config
 ## tmux configurations
 
 ```shell
-$ mv tmux.conf ~/.tmux.conf
+$ tmux -V # check version
+$ mv tmux.conf ~/.tmux.conf      # for tmux 2.0
+$ mv tmux.conf-2.9 ~/.tmux.conf  # for tmux 2.1+
 
 # start tmux session
 $ tmux
