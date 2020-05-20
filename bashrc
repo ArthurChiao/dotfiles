@@ -139,3 +139,10 @@ alias ksts='kubectl get sts -o wide'
 alias knode='kubectl get nodes -o wide'
 
 alias c='cilium'
+
+function nsenter-ctn () {
+    CTN=$1 # container ID or name
+    PID=$(dk inspect --format "{{.State.Pid}}" $CTN)
+    shift 1 # remove the first arguement, shift others to the left
+    nsenter -t $PID $@
+}
