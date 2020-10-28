@@ -146,3 +146,7 @@ function nsenter-ctn () {
     shift 1 # remove the first arguement, shift others to the left
     nsenter -t $PID $@
 }
+
+alias toupper='tr [a-z] [A-Z]'
+alias tolower='tr [A-Z] [a-z]'
+alias linebreak2whitespace='tr "\r\n" " "'
