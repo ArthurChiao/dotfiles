@@ -150,3 +150,17 @@ function nsenter-ctn () {
 alias toupper='tr [a-z] [A-Z]'
 alias tolower='tr [A-Z] [a-z]'
 alias linebreak2whitespace='tr "\r\n" " "'
+
+# Manpage with colors
+# Credit: https://blog.yossarian.net/2018/01/22/Reading-Manpages-Like-a-Pro
+man() {
+    env \
+    LESS_TERMCAP_mb="$(printf "\e[1;31m")" \
+    LESS_TERMCAP_md="$(printf "\e[1;31m")" \
+    LESS_TERMCAP_me="$(printf "\e[0m")" \
+    LESS_TERMCAP_se="$(printf "\e[0m")" \
+    LESS_TERMCAP_so="$(printf "\e[1;44;33m")" \
+    LESS_TERMCAP_ue="$(printf "\e[0m")" \
+    LESS_TERMCAP_us="$(printf "\e[1;32m")" \
+    man "${@}"
+}
