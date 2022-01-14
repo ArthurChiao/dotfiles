@@ -132,19 +132,26 @@ alias dkcompose='sudo docker-compose'
 alias dkps='sudo docker ps --format "{{.ID}}\t {{.Command}}\t\t {{.RunningFor}}\t\t {{.Names}}" | grep -v pause'
 alias dklogpath='sudo docker inspect --format "{{.LogPath}}"'
 
+alias crictl='sudo crictl'
+
 alias k='kubectl'
 alias kpod='kubectl get pods -o wide'
 alias ksvc='kubectl get svc -o wide'
 alias ksts='kubectl get sts -o wide'
 alias knode='kubectl get nodes -o wide'
 
-alias c='cilium'
-
 function nsenter-ctn () {
     CTN=$1 # container ID or name
     PID=$(dk inspect --format "{{.State.Pid}}" $CTN)
     shift 1 # remove the first arguement, shift others to the left
     nsenter -t $PID $@
+}
+
+function nsenter-cri () {
+    CTN=$1 # container ID, note that container name doesn't work in crictl
+    PID=$(sudo crictl inspect --output go-template --template "{{.info.pid}}" $CTN)
+    shift 1 # remove the first arguement, shift others to the left
+    sudo nsenter -t $PID $@
 }
 
 alias toupper='tr [a-z] [A-Z]'
