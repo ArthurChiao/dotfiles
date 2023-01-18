@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # user
-# git config --global user.name "arthurchiao"
-# git config --global user.email "arthurchiao@hotmail.com"
+# git config --global user.name "ArthurChiao"
+# git config --global user.email "ArthurChiao@users.noreply.github.com"
 
 # alias
 git config --global alias.d 'diff --color'
